@@ -1,0 +1,8 @@
+flask
+jsonpickle
+flask_cors
+pymongo
+PyJwt
+requests
+netCDF4
+arm_pyart
