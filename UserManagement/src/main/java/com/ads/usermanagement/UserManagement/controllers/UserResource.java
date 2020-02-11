@@ -40,8 +40,9 @@ public class UserResource {
         return ("Hello World!!!");
     }
 
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@RequestBody Users users) throws Exception
+    ResponseEntity<String> register(@RequestBody Users users) throws Exception
     {
         Users u = new Users();
         u.setName(users.getName());
@@ -49,10 +50,10 @@ public class UserResource {
         u.setRole(users.getRole());
         u.setPassword(passwordEncoder.encode(users.getPassword()));
         String s = userService.registerUsers(u);
-        return s;
+        return new ResponseEntity<>(s, HttpStatus.OK);
     }
 
-
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 
