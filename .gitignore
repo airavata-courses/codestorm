@@ -19,3 +19,20 @@ src/test
 main/resources/static
 main/resources/templates
 
+PostProcessing/.COMMIT_EDITMSG.swp
+PostProcessing/COMMIT_EDITMSG
+PostProcessing/config
+PostProcessing/description
+PostProcessing/HEAD
+PostProcessing/hooks
+PostProcessing/index
+PostProcessing/info
+PostProcessing/logs
+PostProcessing/objects
+PostProcessing/ORIG_HEAD
+PostProcessing/packed-refs
+PostProcessing/refs
+PostProcessing/__pycache__
+PostProcessing/venv
+
+
