@@ -24,6 +24,5 @@ ModelExecution/__pycache
 ModelExecution/auth.ini
 ModelExecution/geckodriver.log
 ModelExecution/venv
-PostProcessing/
-PostProcessing/__pycache
+PostProcessing/__pycache__
 PostProcessing/venv
