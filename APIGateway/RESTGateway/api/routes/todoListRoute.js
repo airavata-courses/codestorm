@@ -1,12 +1,12 @@
 'use strict';
 module.exports = function(app) {
   console.log("inside route")
-  // var DataRetrievalController = require('../controllers/DataRetrievalController');
+  var DataRetrievalController = require('../controllers/DataRetrievalController');
   var UserManagementController = require('../controllers/UserManagementController');
   // var SessionManagementController = require('../controllers/SessionManagementController')
   // todoList Routes
-  // app.route('/getWeatherData')
-    // .get(DataRetrievalController.getWeatherData);
+  app.route('/getWeatherData')
+    .get(DataRetrievalController.getWeatherData);
 
     
     
