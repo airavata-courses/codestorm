@@ -20,3 +20,10 @@ main/resources/static
 main/resources/templates
 DataRetrieval/venv
 DataRetrieval/__pycache__
+ModelExecution/__pycache
+ModelExecution/auth.ini
+ModelExecution/geckodriver.log
+ModelExecution/venv
+PostProcessing/
+PostProcessing/__pycache
+PostProcessing/venv
