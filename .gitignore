@@ -18,4 +18,5 @@ UserManagement.iml
 src/test
 main/resources/static
 main/resources/templates
-
+DataRetrieval/venv
+DataRetrieval/__pycache__
