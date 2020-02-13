@@ -26,3 +26,4 @@ ModelExecution/geckodriver.log
 ModelExecution/venv
 PostProcessing/__pycache__
 PostProcessing/venv
+APIGateway/.DS_Store

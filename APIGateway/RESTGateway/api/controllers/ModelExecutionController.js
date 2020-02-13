@@ -1,14 +1,10 @@
 const axios = require('axios')
 
-exports.getWeatherData = function(req,res) {
-    console.log("Inside getWeatherData");
-    var host='localhost';
-    var port ='7000';
-     
-    
-        return axios({
+exports.getModelExecutionStatus = function(req,res) {
+    console.log("Inside getModelExecutionStatus");
+      return axios({
             method: "get",
-            url: "http://localhost:7000/getWeatherData",
+            url: "http://localhost:7500/modelexecution",
             headers: {
               "Access-Control-Allow-Origin": "*"
             }
