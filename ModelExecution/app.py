@@ -63,7 +63,7 @@ def make_plot(temp):
     ax.set_title('Mean Temperature')
 
     # # use the savefig function attached to the figure object, saving the figure
-    print("SAving File!!!!!!!!!!")
+    # print("SAving File!!!!!!!!!!")
     fig.savefig('lineplot.png', dpi=300)
     image_link = mr.helper()
     s = mdp.md_producer(image_link)

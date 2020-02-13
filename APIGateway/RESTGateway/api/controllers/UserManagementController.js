@@ -1,5 +1,5 @@
 const axios = require('axios');
-//var utils = require('../utils');
+var utils = require('../utils');
 
 exports.login = function(req, res) {
 
@@ -26,54 +26,20 @@ exports.login = function(req, res) {
         .then(response => {
         console.log(response.data);
         res.send(response.data);
+        utils.addNewSession({
+            requestTime:new Date(),
+            userName: 'sia@iu.edu',
+            requestName: "Login",
+            requestStatus:true
+          });
         })
         .catch(err => {
         console.log(err);
         res.send({ err });
         });
-    
 };
 
 // exports.register = function(req, res) {
-//     var zookeeper = require('node-zookeeper-client');
-//     var host,port;
-//     var client = zookeeper.createClient('localhost:2181');
-//     var path = '/user_management';
-//     var url;
-//     var username, password;
-    
-//     client.getData(
-//         path,
-//         function (event) {
-//             console.log('Got event: %s.', event);
-//         },
-//         function (error, data, stat) {
-//             if (error) {
-//                 console.log(error.stack);
-//                 return;
-//             }
-//             zookeeper_data = JSON.parse(data.toString('utf8'))
-//             host = zookeeper_data["host"];
-//             port = zookeeper_data["port"];
-//             console.log(host);
-//             console.log(port);
-            
-//             url = "http://" + host + ":" + port.toString() + '/auth/register';
-//             console.log(url);
-
-//             username = req.body.username;
-//             email = req.body.email;
-//             password = req.body.password;
-
-//             console.log(username + ', ' + email + ', ' + password);
-//             RegisterAPICall(url, username, email, password, res);
-//         }
-//     );    
-    
-//     client.connect();
-
-//     function RegisterAPICall(url, username, email, password, res)
-//     {
 //         return axios({
 //             method: "post",
 //             url: url,

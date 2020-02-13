@@ -1,15 +1,14 @@
 const axios = require('axios')
 var utils = require('../utils');
 
-exports.getWeatherData = function(req,res) {
-    console.log("Inside getWeatherData");
+exports.postprocessing = function(req,res) {
+    console.log("Inside postprocessing");
     var host='localhost';
-    var port ='7000';
-     
-    
+    var port ='5500';
+
         return axios({
             method: "get",
-            url: "http://localhost:7000/getWeatherData",
+            url: "http://localhost:5500/postprocessing",
             headers: {
               "Access-Control-Allow-Origin": "*"
             }
@@ -20,7 +19,7 @@ exports.getWeatherData = function(req,res) {
             utils.addNewSession({
               requestTime:new Date(),
               userName: 'sia@iu.edu',
-              requestName: "Data Retrieval",
+              requestName: "Post Processing",
               requestStatus:true
             });
           })

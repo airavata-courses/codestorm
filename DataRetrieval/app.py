@@ -26,7 +26,7 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 
-@app.route("/hello")
+@app.route("/getWeatherData")
 def retrieve_data():
     # Path to netCDF file, change /data_path/ to match where the file is located on your system
     file_name = 'sgpmetE13.b1.20140218.000000.cdf'
@@ -85,38 +85,9 @@ def retrieve_data():
     # and variables in the file
     # print(file_obj)
     # gp.make_plot(file_obj)
-    return "Hello World!!!"
-# def make_plot(file_obj):
-#     temp_obj = file_obj.variables['temp_mean']
-#     # store the temp_mean data in a variable
-#     temp = temp_obj[:]
+    response = "The temperature data is \n" + str(temp_obj) 
+    return jsonpickle.encode(response, unpicklable=False), 200
+    # return "Hello World!!!"
 
-
-#     # use the subplots function to create a single plot
-#     # this makes things easier as you move to multipanel plotting
-#     fig, ax = subplots()
-
-#     # use the plot method of the axis object
-#     ax.plot(temp)
-
-#     # # optional commands
-
-#     # # add gridlines to the plot
-#     ax.grid()
-
-#     # # set limits for the x axis, 1440 total time values
-#     ax.set_xlim(0,1439)
-
-#     # # add a title
-#     ax.set_title('Mean Temperature')
-
-#     # # use the savefig function attached to the figure object, saving the figure
-#     fig.savefig('lineplot.png', dpi=300)
-
-#     return "Hello World Again!"
-
-# retrieve_data()
-
-# # Starting the application server
 if __name__ == '__main__':
 	app.run(host = '0.0.0.0', port = 7000)
