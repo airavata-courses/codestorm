@@ -2,11 +2,7 @@
 from flask import Flask
 from flask_cors import CORS,cross_origin
 from netCDF4 import Dataset
-# import generate_plot as gp
-# must insert this statement to render the plots within the notebook
-# this is specific to the ipython notebook
-#%matplotlib inline
-# import subplots function for plotting
+import jsonpickle
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib.pyplot import subplots
@@ -22,8 +18,6 @@ app.config.from_object(__name__)
 # source URL
 app.config['CORS_HEADERS'] = 'Content-Type'
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
-
-
 
 
 @app.route("/getWeatherData")
@@ -65,7 +59,6 @@ def retrieve_data():
     # print variable attributes for temp_mean variable ('u' simply means unicode string)
     print(temp_obj.ncattrs())
 
-
     # access a variable attribute:
 
     # method 1
@@ -80,11 +73,6 @@ def retrieve_data():
     temp = temp_obj[:]
 
     drp.dr_producer(temp)
-    # make_plot(file_obj)
-    # printing the file object displays the python type, global attributes, file dimensions,
-    # and variables in the file
-    # print(file_obj)
-    # gp.make_plot(file_obj)
     response = "The temperature data is \n" + str(temp_obj) 
     return jsonpickle.encode(response, unpicklable=False), 200
     # return "Hello World!!!"
