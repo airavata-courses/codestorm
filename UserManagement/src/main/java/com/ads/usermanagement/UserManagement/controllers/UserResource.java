@@ -3,13 +3,20 @@ package com.ads.usermanagement.UserManagement.controllers;
 import com.ads.usermanagement.UserManagement.models.AuthenticationRequest;
 import com.ads.usermanagement.UserManagement.models.AuthenticationResponse;
 import com.ads.usermanagement.UserManagement.models.Users;
+import com.ads.usermanagement.UserManagement.payload.UserSummary;
+import com.ads.usermanagement.UserManagement.security.CurrentUser;
+import com.ads.usermanagement.UserManagement.security.UserPrincipal;
 import com.ads.usermanagement.UserManagement.service.UserService;
 import com.ads.usermanagement.UserManagement.util.JwtUtil;
+
+import java.net.URI;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,6 +24,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class UserResource {
@@ -43,7 +51,7 @@ public class UserResource {
 
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    ResponseEntity<String> register(@RequestBody Users users) throws Exception
+    ResponseEntity<?> register(@RequestBody Users users) throws Exception
     {
         Users u = new Users();
         u.setName(users.getName());
@@ -51,7 +59,22 @@ public class UserResource {
         u.setRole(users.getRole());
         u.setPassword(passwordEncoder.encode(users.getPassword()));
         String s = userService.registerUsers(u);
-        return new ResponseEntity<>(s, HttpStatus.OK);
+        
+        if(s.length() > 0) {
+        	
+        	URI location = ServletUriComponentsBuilder
+                    .fromCurrentContextPath().path("/users/{username}")
+                    .buildAndExpand(u.getUsername()).toUri();
+        	
+        	return ResponseEntity.created(location).body(new AuthenticationResponse(true, "User is registered successfully!"));
+        	
+        } else {
+        	
+        	return new ResponseEntity(new AuthenticationResponse(false, "Username is already taken!"),
+                    HttpStatus.BAD_REQUEST);
+        	
+        }
+        
     }
 
     @CrossOrigin(origins = "*")
@@ -73,7 +96,18 @@ public class UserResource {
 
         //Everything is OK. Payload of Response Entity will have AuthenticationResponse(jwt).
         //AuthenticationResponse(jwt) is the class in model.
+        System.out.println(jwt);
+        System.out.println(ResponseEntity.ok(new AuthenticationResponse(jwt)));
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
 
     }
+    
+    @GetMapping("/user/me")
+    public UserSummary getCurrentUser(@CurrentUser UserDetails currentUser) {
+    	System.out.println(currentUser);
+        UserSummary userSummary = new UserSummary(currentUser.getUsername());
+        System.out.println(userSummary);
+        return userSummary;
+    }
+    
 }

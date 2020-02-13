@@ -51,7 +51,8 @@ public class UserService implements UserDetailsService{
             s = " User " + user.getName() + " with username : " + user.getUsername() + " successfully registered!";
         }
         else
-            s = "Registration failed, User with username " + user.getUsername() + " already exists. ";
+            // s = "Registration failed, User with username " + user.getUsername() + " already exists. ";
+        	s = "";
         return s;
     }
 }
