@@ -20,7 +20,6 @@ def pp_consumer():
             continue
         data = pickle.loads(msg.value())
         print("Model consumer : ", data)
-        # print('Received message: {}'.format(msg.value().decode('utf-8')))
         c.close()
         print("Returning from pp_consumer!!!!!!!!!!!!")
         return(msg.value())

@@ -16,6 +16,7 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/postprocessing")
 def helper():
+    #Response is already in pickled format. Hence, returning it as it is.
     image_link = ppc.pp_consumer()
     print("Got link object in the helper of app.py of post processing!!!!! ------> ", image_link)
     return image_link
