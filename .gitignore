@@ -20,7 +20,7 @@ main/resources/static
 main/resources/templates
 DataRetrieval/venv
 DataRetrieval/__pycache__
-ModelExecution/__pycache
+ModelExecution/__pycache__
 ModelExecution/auth.ini
 ModelExecution/geckodriver.log
 ModelExecution/venv

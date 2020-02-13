@@ -6,12 +6,8 @@ import generate_plot as gp
 import model_data_consumer as mdc
 import model_res as mr
 import model_data_res_producer as mdp
+import jsonpickle
 
-
-# must insert this statement to render the plots within the notebook
-# this is specific to the ipython notebook
-#%matplotlib inline
-# import subplots function for plotting
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib.pyplot import subplots
@@ -33,17 +29,11 @@ def helper():
     temp = mdc.md_consumer()
     print("Got file object!!!!!")
     make_plot(temp)
-    return "Exiting from helper of apps"
+    response = "Model Execution is done."
+    return jsonpickle.encode(response, unpicklable=False), 200
 
 
 def make_plot(temp):
-
-    # print("Inside makeplot!!!!!!!!")
-    # temp_obj = file_obj.variables['temp_mean']
-    # # store the temp_mean data in a variable
-    # temp = temp_obj[:]
-
-
     # use the subplots function to create a single plot
     # this makes things easier as you move to multipanel plotting
     fig, ax = subplots()
@@ -63,13 +53,10 @@ def make_plot(temp):
     ax.set_title('Mean Temperature')
 
     # # use the savefig function attached to the figure object, saving the figure
-    # print("SAving File!!!!!!!!!!")
     fig.savefig('lineplot.png', dpi=300)
     image_link = mr.helper()
     s = mdp.md_producer(image_link)
     return s
-
-
 
 # # Starting the application server
 if __name__ == '__main__':

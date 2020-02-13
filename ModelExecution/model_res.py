@@ -13,9 +13,7 @@ client = ImgurClient(client_id, client_secret)
 image_path = 'lineplot.png'
 
 def upload_image(client):
-    print("Uploading image!!!")
     image = client.upload_from_path(image_path, config=config, anon=False)
-    print("Done!!!!")
     print(image)
     return image
 
