@@ -11,7 +11,7 @@ module.exports = function(app) {
   // var SessionManagementController = require('../controllers/SessionManagementController')
   // todoList Routes
   app.route('/getWeatherData')
-    .get(DataRetrievalController.getWeatherData);
+    .post(DataRetrievalController.getWeatherData);
 
   app.route('/modelexecution')
     .get(ModelExecutionController.getModelExecutionStatus);
@@ -19,11 +19,14 @@ module.exports = function(app) {
   app.route('/authenticate')
    .post(UserManagementController.login);
 
-  // app.route('/register')
-  //   .post(UserManagementController.register); 
+   app.route('/register')
+     .post(UserManagementController.register); 
 
   app.route('/postprocessing')
     .get(PostProcessingController.postprocessing); 
+
+  // app.route('/user/me')
+  //   .get(UserManagementController.loadcurrentuser);
     
     // app.route('/user_dashboard')
     // .get(UserManagementController.user_details); 

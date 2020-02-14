@@ -1,4 +1,7 @@
+
 import { API_BASE_URL, ACCESS_TOKEN } from '../constants';
+
+const axios = require('axios');
 
 const request = (options) => {
     const headers = new Headers({
@@ -24,6 +27,7 @@ const request = (options) => {
 };
 
 export function login(loginRequest) {
+    console.log("InsideAPIUtils Login REQQUEEEESSTTT",loginRequest);
     return request({
         url: API_BASE_URL + "/authenticate",
         method: 'POST',
@@ -56,15 +60,20 @@ export function getCurrentUser() {
     });
 }
 
-export function getWeatherData() {
+export function getWeatherData(req,res) {
 
     console.log("In getWeatherData")
 
-    return request({
+    return axios({
         url: API_BASE_URL + "/getWeatherData",
         method: 'GET'
-    });
-
+    })
+    //.then(res => res.json())
+    //    .then((data) => {
+    //    console.log(response)
+    //   weatherData.setState({weatherData : res.data })
+    //    })
+    //    .catch(console.log)
 }
 
 export function performAnalysis() {

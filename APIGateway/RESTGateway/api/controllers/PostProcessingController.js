@@ -16,12 +16,12 @@ exports.postprocessing = function(req,res) {
           .then(response => {
             console.log("Recieved response")
             res.send(response.data);
-            utils.addNewSession({
-              requestTime:new Date(),
-              userName: 'sia@iu.edu',
-              requestName: "Post Processing",
-              requestStatus:true
-            });
+            // utils.addNewSession({
+            //   requestTime:new Date(),
+            //   userName: 'sia@iu.edu',
+            //   requestName: "Post Processing",
+            //   requestStatus:true
+            // });
           })
           .catch(err => {
             console.log(err);

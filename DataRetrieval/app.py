@@ -74,8 +74,8 @@ def retrieve_data():
 
     drp.dr_producer(temp)
     response = "The temperature data is \n" + str(temp_obj) 
-    return jsonpickle.encode(response, unpicklable=False), 200
-    # return "Hello World!!!"
+    #return jsonpickle.encode(response, unpicklable=False), 200
+    return "Hello World!!!"
 
 if __name__ == '__main__':
 	app.run(host = '0.0.0.0', port = 7000)

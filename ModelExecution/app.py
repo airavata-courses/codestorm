@@ -56,6 +56,8 @@ def make_plot(temp):
     fig.savefig('lineplot.png', dpi=300)
     image_link = mr.helper()
     s = mdp.md_producer(image_link)
+
+    print("Imaaagggeeeee Linkkkkkkkk", image_link)
     return s
 
 # # Starting the application server

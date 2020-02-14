@@ -1,7 +1,7 @@
-const axios = require('axios')
+const axios = require('axios');
 var utils = require('../utils');
 
-exports.getWeatherData = function(req,res) {
+exports.getWeatherData = function(req, res) {
     console.log("Inside getWeatherData");
     var host='localhost';
     var port ='7000';
@@ -16,13 +16,14 @@ exports.getWeatherData = function(req,res) {
           })
           .then(response => {
             console.log("Recieved response")
+            console.log("inside response", response.data);
             res.send(response.data);
-            utils.addNewSession({
-              requestTime:new Date(),
-              userName: 'sia@iu.edu',
-              requestName: "Data Retrieval",
-              requestStatus:true
-            });
+            // utils.addNewSession({
+            //   requestTime:new Date(),
+            //   userName: 'sia@iu.edu',
+            //   requestName: "Data Retrieval",
+            //   requestStatus:true
+            // });
           })
           .catch(err => {
             console.log(err);

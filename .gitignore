@@ -27,3 +27,4 @@ ModelExecution/venv
 PostProcessing/__pycache__
 PostProcessing/venv
 APIGateway/.DS_Store
+ModelExecution/__pycache__

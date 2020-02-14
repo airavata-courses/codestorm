@@ -19,7 +19,9 @@ def pp_consumer():
             print("Consumer error: {}".format(msg.error()))
             continue
         data = pickle.loads(msg.value())
+        print("Datatype of data is : ", type(data))
         print("Model consumer : ", data)
-        c.close()
+        # c.close()
         print("Returning from pp_consumer!!!!!!!!!!!!")
-        return(msg.value())
+    c.close()
+    return(msg.value())
