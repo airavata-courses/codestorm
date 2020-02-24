@@ -15,11 +15,10 @@ exports.getWeatherData = function(req,res) {
             }
           })
           .then(response => {
-            console.log("Recieved response")
+            console.log("Recieved response inside DRC then response")
             res.send(response.data);
             utils.addNewSession({
               requestTime:new Date(),
-              userName: 'sia@iu.edu',
               requestName: "Data Retrieval",
               requestStatus:true
             });

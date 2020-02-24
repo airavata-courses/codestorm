@@ -18,7 +18,6 @@ exports.postprocessing = function(req,res) {
             res.send(response.data);
             utils.addNewSession({
               requestTime:new Date(),
-              userName: 'sia@iu.edu',
               requestName: "Post Processing",
               requestStatus:true
             });

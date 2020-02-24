@@ -15,7 +15,6 @@ exports.getModelExecutionStatus = function(req,res) {
             res.send(response.data);
             utils.addNewSession({
               requestTime:new Date(),
-              userName: 'sia@iu.edu',
               requestName: "Model Execution",
               requestStatus:true
             });

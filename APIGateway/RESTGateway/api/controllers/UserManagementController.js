@@ -28,7 +28,7 @@ exports.login = function(req, res) {
         res.send(response.data);
         utils.addNewSession({
             requestTime:new Date(),
-            userName: 'sia@iu.edu',
+            userName: username,
             requestName: "Login",
             requestStatus:true
           });

@@ -10,6 +10,8 @@ const util = require('../utils');
             }
           })
           .then(response => {
+            console.log("Inside SMC, the response is ")
+            console.log(response)
             res.send(response.data);
           })
           .catch(err => {
