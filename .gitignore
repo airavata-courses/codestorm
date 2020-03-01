@@ -28,6 +28,7 @@ ModelExecution/lineplot.png
 PostProcessing/__pycache__
 PostProcessing/venv
 APIGateway/.DS_Store
+ModelExecution/__pycache__
 sessionmanagement-2/.idea
 sessionmanagement-2/.mvn
 sessionmanagement-2/mvnw

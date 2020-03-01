@@ -16,11 +16,13 @@ exports.postprocessing = function(req,res) {
           .then(response => {
             console.log("Recieved response")
             res.send(response.data);
+
             utils.addNewSession({
               requestTime:new Date(),
               requestName: "Post Processing",
               requestStatus:true
             });
+
           })
           .catch(err => {
             console.log(err);
