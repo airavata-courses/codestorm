@@ -16,7 +16,6 @@ pipeline
             steps
             {
                 sh 'mvn -B -DskipTests clean package'
-                def pom = readMavenPom file:'pom.xml'
             }
         }
 
