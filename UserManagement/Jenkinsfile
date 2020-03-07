@@ -15,7 +15,10 @@ pipeline
         {
             steps
             {
-                bat ' mvn -f UserManagement/pom.xml clean install'
+                sh '''
+                    cd UserManagement
+                    mvn clean install
+                '''
             }
         }
 
