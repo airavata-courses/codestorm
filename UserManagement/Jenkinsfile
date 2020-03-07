@@ -15,13 +15,9 @@ pipeline
         {
             steps
             {
-                sh 'mvn -B -DskipTests clean package'
+                bat ' mvn -f UserManagement/pom.xml clean install'
             }
         }
 
     }
-
-
-
-
 }
