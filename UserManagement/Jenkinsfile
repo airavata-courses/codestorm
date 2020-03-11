@@ -15,6 +15,10 @@ pipeline
                             cd UserManagement
                             mvn -B -DskipTests clean package
                         '''
+                        sh '''
+                        cd sessionmanagement-2
+                        mvn -B -DskipTests clean package
+                        '''
                     }
                 }
 
@@ -24,6 +28,11 @@ pipeline
             {
                 sh '''
                     cd UserManagement
+                    mvn clean install
+                '''
+
+                sh '''
+                    cd sessionmanagement-2
                     mvn clean install
                 '''
             }
