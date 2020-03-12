@@ -1,0 +1,42 @@
+pipeline
+{
+    agent any
+    tools {
+            maven 'Maven 3.6.3'
+        }
+
+    stages
+    {
+        stage('Build')
+                {
+                    steps
+                    {
+                        sh '''
+                            cd UserManagement
+                            mvn -B -DskipTests clean package
+                        '''
+                        sh '''
+                        cd sessionmanagement-2
+                        mvn -B -DskipTests clean package
+                        '''
+                    }
+                }
+
+        stage('Install')
+        {
+            steps
+            {
+                sh '''
+                    cd UserManagement
+                    mvn clean install
+                '''
+
+                sh '''
+                    cd sessionmanagement-2
+                    mvn clean install
+                '''
+            }
+        }
+
+    }
+}

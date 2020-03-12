@@ -14,6 +14,10 @@
 	<name>UserManagement</name>
 	<description>Demo project for Spring Boot</description>
 
+
+	<!-- define the packaging type -->
+	<packaging>jar</packaging>
+
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -59,6 +63,12 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
+			<type>maven-plugin</type>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -78,7 +88,33 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.2.5.RELEASE</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-jar-plugin</artifactId>-->
+<!--				<configuration>-->
+<!--					&lt;!&ndash; DO NOT include log4j.properties file in your Jar &ndash;&gt;-->
+<!--					<excludes>-->
+<!--						<exclude>**/log4j.properties</exclude>-->
+<!--					</excludes>-->
+<!--					<archive>-->
+<!--						<manifest>-->
+<!--							&lt;!&ndash; Jar file entry point &ndash;&gt;-->
+<!--							<mainClass><com class="ads usermanagement UserManagement UserManagementApplication"></com></mainClass>-->
+<!--							<classpathPrefix>dependency-jars/</classpathPrefix>-->
+<!--						</manifest>-->
+<!--					</archive>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
