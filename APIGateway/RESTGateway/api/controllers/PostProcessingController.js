@@ -8,13 +8,14 @@ exports.postprocessing = function(req,res) {
 
         return axios({
             method: "get",
-            url: "http://localhost:5500/postprocessing",
+            url: "http://postprocessing:5500/postprocessing",
             headers: {
               "Access-Control-Allow-Origin": "*"
             }
           })
           .then(response => {
             console.log("Recieved response")
+            console.log(response.data)
             res.send(response.data);
 
             utils.addNewSession({

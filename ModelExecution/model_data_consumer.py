@@ -10,14 +10,22 @@ c = Consumer({
 c.subscribe(['DataRetrieval'])
 
 def md_consumer():
-    while True:
-        msg = c.poll(1.0)
-        if msg is None:
-            continue
-        if msg.error():
-            print("Consumer error: {}".format(msg.error()))
-            continue
-        data = pickle.loads(msg.value())
-        print("Model consumer : ", data)
-        c.close()
-        return("Returning from md_consumer!!!!")
+    print("Started Consuming")
+    # while True:
+    print("Inside while!!!")
+    msg = c.poll(1.0)
+    if msg is None:
+        print("No message") 
+        # continue
+        #return "No message"
+    if msg.error():
+        print("Consumer error: {}".format(msg.error()))
+        # continue
+    if msg.value()==None:
+        return None
+    data = pickle.loads(msg.value())
+    print("Model consumer : !!!!!!!!!!!!!!!!!!!!!!!!", data)
+    print("Returning from md_consumer!!!!")
+    return data
+    c.close()
+   

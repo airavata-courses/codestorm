@@ -16,7 +16,7 @@ class Weatherdata extends Component {
     getData(){
         return axios({
             method: "post",
-            url:"http://localhost:4000/getWeatherData",
+            url:"http://api-gateway:4000/getWeatherData",
             headers: {
                 "Access-Control-Allow-Origin": "*"
             }
@@ -48,7 +48,7 @@ class Weatherdata extends Component {
     getAnalysis(){
         return axios({
             method: "get",
-            url:"http://localhost:4000/modelexecution",
+            url:"http://api-gateway:4000/modelexecution",
             headers: {
                 "Access-Control-Allow-Origin": "*"
             }
@@ -79,7 +79,7 @@ class Weatherdata extends Component {
     getResults(){
         return axios({
             method: "get",
-            url:"http://localhost:4000/postprocessing",
+            url:"http://api-gateway:4000/postprocessing",
             headers: {
                 "Access-Control-Allow-Origin": "*"
             }

@@ -15,7 +15,7 @@ exports.login = function(req, res) {
 
     return axios({
         method: "post",
-        url:"http://localhost:8085/authenticate",
+        url:"http://usermanagement:8085/authenticate",
         headers: {
             "Access-Control-Allow-Origin": "*"
         },
