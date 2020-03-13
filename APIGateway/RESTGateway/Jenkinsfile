@@ -13,8 +13,8 @@ node {
 	withCredentials([usernamePassword( credentialsId: 'docker_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
 	    def registry_url = "registry.hub.docker.com/"
             sh "docker login -u $USER -p $PASSWORD docker.io"
-	    docker.withRegistry("http://${registry_url}", "docker_credentials") {
-	          sh "docker push codestorm/api-gateway"
+	    docker.withRegistry("https://hub.docker.com/", "docker_credentials") {
+	          sh "docker push codestorm/api-5ateway"
           	
 	    }
 	}
