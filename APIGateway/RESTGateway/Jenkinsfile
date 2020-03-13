@@ -1,13 +1,9 @@
 node {
-    stage('Code checkout') {
-        checkout scm
-    }
+    checkout scm
 
-    stage('Build image') {
-    	withCredentials([usernamePassword( credentialsId: 'cd456d2d-aed2-4582-b272-28fc33cd5507', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
-	    sh "docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
-	}
+    def customImage = docker.build("my-image:${env.BUILD_ID}")
+
+    customImage.inside {
+        sh 'make test'
     }
-	
-   
 }
