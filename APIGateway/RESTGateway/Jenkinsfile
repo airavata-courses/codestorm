@@ -1,0 +1,21 @@
+node {
+    stage('Code checkout') {
+        checkout scm
+    }
+
+    stage('Build image') {
+    	 
+	    sh "sudo -S docker-compose -f ./APIGateway/RESTGATEWAY/docker-compose.yml build"
+	
+    }
+	
+    stage('Push image') {
+	 
+	    def registry_url = "registry.hub.docker.com/"
+             {
+	          sh "sudo -S docker push codestorm/api-gateway"
+          	
+	    }
+	
+    }
+}
