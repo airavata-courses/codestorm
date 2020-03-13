@@ -5,7 +5,7 @@ node {
 
     stage('Build image') {
     	 
-	    sh "sudo -S docker-compose -f ./APIGateway/RESTGATEWAY/docker-compose.yml build"
+	    sh "sudo -S docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
 	
     }
 	
