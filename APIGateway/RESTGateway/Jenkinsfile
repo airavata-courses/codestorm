@@ -5,15 +5,15 @@ node {
 
     stage('Build image') {
     	withCredentials([usernamePassword( credentialsId: 'cd456d2d-aed2-4582-b272-28fc33cd5507', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
-	    sh "sudo -S docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
+	    sh "docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
 	}
     }
 	
     stage('Push image') {
 	withCredentials([usernamePassword( credentialsId: 'docker_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
 	    def registry_url = "registry.hub.docker.com/"
-            sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
-	    docker.withRegistry("http://${registry_url}", "docker-hub-credentials") {
+            sh "docker login -u $USER -p $PASSWORD docker.io"
+	    docker.withRegistry("http://${registry_url}", "docker_credentials") {
 	          sh "sudo -S docker push codestorm/api-gateway"
           	
 	    }
