@@ -43,3 +43,9 @@ sessionmanagement-2/src/main/java/.DS_Store
 sessionmanagement-2/src/main/java/com/.DS_Store
 sessionmanagement-2/src/main/java/com/example/.DS_Store
 sessionmanagement-2/src/main/java/com/example/sessionmanagement2/.DS_Store
+*.js
+*.css
+*.html
+*.swp
+*.png
+*.xml

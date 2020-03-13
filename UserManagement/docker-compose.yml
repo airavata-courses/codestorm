@@ -1,0 +1,17 @@
+version: "2"
+networks:
+  default:
+    external:
+      name: codestorm-default-network
+
+services:
+  UserManagement:
+    container_name: user_management_container  // container name is given
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: docker-user-management:1.0
+    ports:
+      - "8085:8085"
+
