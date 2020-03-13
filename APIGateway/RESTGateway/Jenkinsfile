@@ -5,7 +5,7 @@ node {
 
     stage('Build image') {
     	 
-	    sh "sudo -S docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
+	    sh "docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
 	
     }
 	
@@ -13,7 +13,7 @@ node {
 	 
 	    def registry_url = "registry.hub.docker.com/"
              {
-	          sh "sudo -S docker push codestorm/api-gateway"
+	          sh "docker push codestorm/api-gateway"
           	
 	    }
 	
