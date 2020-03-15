@@ -1,12 +1,9 @@
 pipeline
 {
     agent any
-    tools {
-            nodejs 'NodeJs 13.11.0'
-        }
 
     environment {
-        registry = "docker_hub_account/codestorm2020"
+        registry = "codestorm2020/codestorm2020"
         registryCredential = 'docker_credentials'
     }
 
