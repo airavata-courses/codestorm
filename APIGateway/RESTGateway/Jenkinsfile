@@ -17,12 +17,10 @@ pipeline
             steps
             {
                 sh '''
-                    sh "sudo -S docker network create --driver bridge codestorm-default-network || true"
-                   	sh "sudo -S docker-compose -f ./APIGateway/RESTGateway//docker-compose.yml build"
-
+                    cd APIGateway/RESTGateway/
+                    docker.build registry + ":$BUILD_NUMBER"
                 '''
             }
         }
      }
 }
-
