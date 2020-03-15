@@ -1,9 +1,12 @@
 pipeline
 {
     agent any
+    tools {
+            nodejs 'NodeJs 13.11.0'
+        }
 
     environment {
-        registry = "codestorm2020/codestorm2020"
+        registry = "docker_hub_account/codestorm2020"
         registryCredential = 'docker_credentials'
     }
 
@@ -15,13 +18,9 @@ pipeline
             {
                 sh '''
                     cd APIGateway/RESTGateway
-                    script
-                    {
-                        docker.build registry + ":$BUILD_NUMBER"
-                    }
+                    docker.build registry + ":$BUILD_NUMBER"
                 '''
             }
         }
      }
 }
-
