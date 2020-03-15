@@ -5,6 +5,11 @@ pipeline
             nodejs 'NodeJs 13.11.0'
         }
 
+    environment {
+        registry = "docker_hub_account/codestorm2020"
+        registryCredential = 'docker_credentials'
+    }
+
     stages
     {
         stage('Build')
@@ -22,3 +27,4 @@ pipeline
         }
      }
 }
+
