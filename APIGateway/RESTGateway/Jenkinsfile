@@ -17,7 +17,7 @@ pipeline
             steps
             {
                     cd APIGateway/RESTGateway
-                    docker build -t . codestorm2020/api-gateway:docker_hub_account
+                    docker build . -t
             }
         }
      }
