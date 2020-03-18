@@ -39,6 +39,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: api-gateway:1.0
+        image: codestorm2020/api-gateway
         ports:
             - "4000:4000"
