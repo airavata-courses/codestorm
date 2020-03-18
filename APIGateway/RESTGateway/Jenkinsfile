@@ -5,7 +5,7 @@ node {
 
     stage('Build image') {
     	withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
-	    	sh "docker run"
+	    	sh "docker run hello-world"
 		sh "docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
 	}
     }
