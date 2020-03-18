@@ -18,7 +18,6 @@ pipeline
             {
                     cd APIGateway/RESTGateway
                     docker build -t codestorm2020/api-gateway:account
-//                  sh "docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
             }
         }
      }
