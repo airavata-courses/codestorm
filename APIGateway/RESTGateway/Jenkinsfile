@@ -15,7 +15,7 @@ node {
 	    def registry_url = "registry.hub.docker.com/"
             sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
 	    docker.withRegistry("http://${registry_url}", "docker_credentials") {
-	          sh "docker push codestorm2020/api-gateway"
+	          sh "sudo -S docker push codestorm2020/api-gateway"
           	
 	    }
 	}
