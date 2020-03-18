@@ -17,7 +17,8 @@ pipeline
             steps
             {
            
-                     sh "sudo -S docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
+                     sh "docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
+                            
             }
         }
      }
