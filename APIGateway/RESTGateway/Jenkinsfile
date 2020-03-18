@@ -1,24 +1,22 @@
-pipeline
-{
-    agent any
-    tools {
-            nodejs 'NodeJs 13.11.0'
-        }
-
-    environment {
-        registry = "docker_hub_account/codestorm2020"
-        registryCredential = 'docker_credentials'
+node {
+    stage('Code checkout') {
+        checkout scm
     }
 
-    stages
-    {
-        stage('Build')
-        {
-            steps
-            {
-                    cd APIGateway/RESTGateway
-                    docker build()
-            }
-        }
-     }
+    stage('Build image') {
+    	withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+	    sh "sudo -S docker-compose -f ./APIGateway/RESTGateway/docker-compose.yml build"
+	}
+    }
+	
+    stage('Push image') {
+	withCredentials([usernamePassword( credentialsId: 'docker_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+	    def registry_url = "registry.hub.docker.com/"
+            sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
+	    docker.withRegistry("http://${registry_url}", "docker_credentials") {
+	          sh "sudo -S docker push codestorm2020/api-gateway"
+          	
+	    }
+	}
+    }
 }
