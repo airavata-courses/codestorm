@@ -17,7 +17,7 @@ pipeline
             steps
             {
                     cd APIGateway/RESTGateway
-                    docker build . -t
+                    docker build()
             }
         }
      }
