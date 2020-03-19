@@ -11,7 +11,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: docker-user-management:1.0
+    image: codestorm2020/usermanagement
     ports:
       - "8085:8085"
 
