@@ -39,6 +39,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: modelexecution:1.0
+        image: codestorm2020/modelexecution
         ports:
             - "7500:7500"
