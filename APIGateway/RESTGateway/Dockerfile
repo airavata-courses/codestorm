@@ -1,4 +1,3 @@
-
 FROM node:current-slim
 
 WORKDIR /usr/src/RESTGateway
