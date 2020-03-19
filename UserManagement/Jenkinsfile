@@ -36,26 +36,26 @@ pipeline
                     mvn clean install
                 '''
 
-                sh '''
-                    cd sessionmanagement-2
-                    mvn clean install
-                '''
+//                 sh '''
+//                     cd sessionmanagement-2
+//                     mvn clean install
+//                 '''
             }
         }
 
-        stage('Push Stage')
-        {
-            withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
-            {
-                def registry_url = "registry.hub.docker.com/"
-                    sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
-                    docker.withRegistry("http://${registry_url}", "docker_credentials")
-                    {
-                        sh "sudo -S docker push codestorm2020/api-gateway"
-                    }
-            }
-
-        }
+//         stage('Push Stage')
+//         {
+//             withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
+//             {
+//                 def registry_url = "registry.hub.docker.com/"
+//                     sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
+//                     docker.withRegistry("http://${registry_url}", "docker_credentials")
+//                     {
+//                         sh "sudo -S docker push codestorm2020/api-gateway"
+//                     }
+//             }
+//
+//         }
 
     }
 }
