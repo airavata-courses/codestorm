@@ -47,13 +47,16 @@ pipeline
         {
             steps
             {
-                withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
-                {
-                    def registry_url = "registry.hub.docker.com/"
-                    sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
-                    docker.withRegistry("http://${registry_url}", "docker_credentials")
+                script
+                {  
+                    withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
                     {
-                        sh "sudo -S docker push codestorm2020/api-gateway"
+                        def registry_url = "registry.hub.docker.com/"
+                        sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
+                        docker.withRegistry("http://${registry_url}", "docker_credentials")
+                        {
+                            sh "sudo -S docker push codestorm2020/api-gateway"
+                        }
                     }
                 }
             }
