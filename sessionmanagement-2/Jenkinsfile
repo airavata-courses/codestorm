@@ -15,11 +15,12 @@ pipeline
                 cd sessionmanagement-2
                 mvn -B -DskipTests clean package
                 '''
+                withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
+                {
+                    sh "sudo -S docker-compose -f ./sessionmanagement-2/docker-compose.yml build"
+                }
             }
-            withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
-            {
-                sh "sudo -S docker-compose -f ./sessionmanagement-2/docker-compose.yml build"
-            }
+
         }
 
         stage('Install')
