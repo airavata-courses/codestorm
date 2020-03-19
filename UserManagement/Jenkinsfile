@@ -55,7 +55,7 @@ pipeline
                         sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
                         docker.withRegistry("http://${registry_url}", "docker_credentials")
                         {
-                            sh "sudo -S docker push codestorm2020/api-gateway"
+                            sh "sudo -S docker push codestorm2020/usermanagement"
                         }
                     }
                 }
