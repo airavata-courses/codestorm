@@ -1,5 +1,4 @@
 package com.ads.usermanagement.UserManagement.controllers;
-
 import com.ads.usermanagement.UserManagement.models.AuthenticationRequest;
 import com.ads.usermanagement.UserManagement.models.AuthenticationResponse;
 import com.ads.usermanagement.UserManagement.models.Users;
