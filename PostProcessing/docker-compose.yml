@@ -39,6 +39,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: postprocessing:1.0
+        image: codestorm2020/postprocessing
         ports:
             - "5500:5500"
