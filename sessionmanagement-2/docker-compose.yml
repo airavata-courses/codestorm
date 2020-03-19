@@ -11,6 +11,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: sessionmanagement-2:1.0
+        image: codestorm2020/sessionmanagement-2
         ports:
             - "8089:8089"
