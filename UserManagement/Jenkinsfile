@@ -49,7 +49,7 @@ pipeline
             {
                 script
                 {  
-                    withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
+                    withCredentials([usernamePassword( credentialsId: 'docker_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
                     {
                         def registry_url = "registry.hub.docker.com/"
                         sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
