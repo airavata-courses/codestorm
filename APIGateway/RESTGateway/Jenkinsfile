@@ -1,4 +1,3 @@
-
 node {
     stage('Code checkout') {
         checkout scm
