@@ -16,7 +16,8 @@ class Weatherdata extends Component {
     getData(){
         return axios({
             method: "post",
-            url:"http://api-gateway:4000/getWeatherData",
+            //url:"http://api-gateway:4000/getWeatherData",
+            url:"http://localhost:4000/getWeatherData",
             headers: {
                 "Access-Control-Allow-Origin": "*"
             }
