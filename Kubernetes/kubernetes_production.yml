@@ -1,0 +1,260 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: api-gateway
+spec:
+  type: LoadBalancing
+  selector:
+    app: api-gateway
+  ports:
+  - protocol: TCP
+    port: 4000
+    targetPort: 4000
+    nodePort: 40000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: dataretrieval
+spec:
+  type: LoadBalancing
+  selector:
+    app: dataretrieval
+  ports:
+  - protocol: TCP
+    port: 7000
+    targetPort: 7000
+    nodePort: 70000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: modelexecution
+spec:
+  type: LoadBalancing
+  selector:
+    app: modelexecution
+  ports:
+  - protocol: TCP
+    port: 7500
+    targetPort: 7500
+    nodePort: 75000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: postprocessing
+spec:
+  type: LoadBalancing
+  selector:
+    app: postprocessing
+  ports:
+  - protocol: TCP
+    port: 5500
+    targetPort: 5500
+    nodePort: 55000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancing
+  selector:
+    app: frontend
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+    nodePort: 30000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: usermanagement
+spec:
+  type: LoadBalancing
+  selector:
+    app: usermanagement
+  ports:
+  - protocol: TCP
+    port: 8085
+    targetPort: 8085
+    nodePort: 80085
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: sessionmanagement
+spec:
+  type: LoadBalancing
+  selector:
+    app: sessionmanagement
+  ports:
+  - protocol: TCP
+    port: 8089
+    targetPort: 8089
+    nodePort: 80089
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  labels:
+    app: api-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway
+        imagePullPolicy: Always
+        image: codestorm2020/api-gateway
+        ports:
+        - containerPort: 4000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dataretrieval
+  labels:
+    app: dataretrieval
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dataretrieval
+  template:
+    metadata:
+      labels:
+        app: dataretrieval
+    spec:
+      containers:
+      - name: dataretrieval
+        imagePullPolicy: Always
+        image: codestorm2020/dataretrieval
+        ports:
+        - containerPort: 7000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: modelexecution
+  labels:
+    app: modelexecution
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: modelexecution
+  template:
+    metadata:
+      labels:
+        app: modelexecution
+    spec:
+      containers:
+      - name: modelexecution
+        imagePullPolicy: Always
+        image: codestorm2020/modelexecution
+        ports:
+        - containerPort: 7500
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postprocessing
+  labels:
+    app: postprocessing
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: postprocessing
+  template:
+    metadata:
+      labels:
+        app: postprocessing
+    spec:
+      containers:
+      - name: postprocessing
+        imagePullPolicy: Always
+        image: codestorm2020/postprocessing
+        ports:
+        - containerPort: 5500
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        imagePullPolicy: Always
+        image: codestorm2020/frontend
+        ports:
+        - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usermanagement
+  labels:
+    app: usermanagement
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: usermanagement
+  template:
+    metadata:
+      labels:
+        app: usermanagement
+    spec:
+      containers:
+      - name: usermanagement
+        imagePullPolicy: Always
+        image: codestorm2020/usermanagement
+        ports:
+        - containerPort: 8085
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sessionmanagement
+  labels:
+    app: sessionmanagement
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sessionmanagement
+  template:
+    metadata:
+      labels:
+        app: sessionmanagement
+    spec:
+      containers:
+      - name: sessionmanagement
+        imagePullPolicy: Always
+        image: codestorm2020/sessionmanagement
+        ports:
+        - containerPort: 8089
