@@ -39,7 +39,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: dataretrieval:1.0
+        image: codestorm2020/dataretrieval
         ports:
             - "7000:7000"
     
