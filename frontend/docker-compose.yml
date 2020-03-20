@@ -39,6 +39,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: frontend:1.0
+        image: codestorm2020/frontend
         ports:
             - "3000:3000"

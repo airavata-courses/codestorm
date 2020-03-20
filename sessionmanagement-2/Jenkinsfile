@@ -8,15 +8,20 @@ pipeline
     stages
     {
         stage('Build')
+        {
+            steps
+            {
+                sh '''
+                cd sessionmanagement-2
+                mvn -B -DskipTests clean package
+                '''
+                withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
                 {
-                    steps
-                    {
-                        sh '''
-                        cd sessionmanagement-2
-                        mvn -B -DskipTests clean package
-                        '''
-                    }
+                    sh "sudo -S docker-compose -f ./sessionmanagement-2/docker-compose.yml build"
                 }
+            }
+
+        }
 
         stage('Install')
         {
@@ -29,5 +34,23 @@ pipeline
             }
         }
 
+        stage('Push Stage')
+        {
+            steps
+            {
+                script
+                {
+                    withCredentials([usernamePassword( credentialsId: 'docker_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
+                    {
+                        def registry_url = "registry.hub.docker.com/"
+                        sh "sudo -S docker login -u $USER -p $PASSWORD docker.io"
+                        docker.withRegistry("http://${registry_url}", "docker_credentials")
+                        {
+                            sh "sudo -S docker push codestorm2020/sessionmanagement-2"
+                        }
+                    }
+                }
+            }
+        }
     }
 }
