@@ -4,7 +4,8 @@ const util = require('../utils');
     console.log("Inside Session Management Controller !!!!!!!!!!!!!!!!!!!!!")
         return axios({
             method: "post",
-            url: "http://sessionmanagement:8089/getSessionData",
+            //url: "http://sessionmanagement:8089/getSessionData",
+            url: "http://localhost:8089/getSessionData",
             headers: {
               "Access-Control-Allow-Origin": "*"
             }
