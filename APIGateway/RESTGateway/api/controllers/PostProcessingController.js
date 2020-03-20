@@ -8,7 +8,8 @@ exports.postprocessing = function(req,res) {
 
         return axios({
             method: "get",
-            url: "http://postprocessing:5500/postprocessing",
+            //url: "http://postprocessing:5500/postprocessing",
+            url: "http://localhost:5500/postprocessing",
             headers: {
               "Access-Control-Allow-Origin": "*"
             }
