@@ -1,0 +1,27 @@
+node {
+    stage('Code checkout') {
+        checkout scm
+    }
+
+    stage('Build image') {
+        sh "sudo -S docker network create --driver bridge codestorm-default-network || true"
+        sh "sudo -S docker-compose -f ./confluentinc-kafka-docker/docker-compose.yml build"
+        sh "sudo -S docker-compose -f ./confluentinc-kafka-docker/docker-compose.yml up -d"
+        sh "sudo -S docker commit zookeeper"
+        sh "sudo -S docker commit kafka"
+	      sh "sudo -S docker tag `docker images --format='{{.Repository}} {{.ID}}' | grep 'confluentinc-kafka' | head -1 | cut -d' ' -f2` `echo codestorm2020/confluentinc-kafka"
+   	    sh "sudo -S docker tag `docker images --format='{{.Repository}} {{.ID}}' | grep 'confluentinc-zookeeper' | head -1 | cut -d' ' -f2` `echo thertion12/confluentinc-zookeeper`"
+        sh "sudo -S docker-compose -f ./confluentinc-kafka-docker/docker-compose.yml down"
+    }
+	
+    stage('Push image') {
+	    withCredentials([usernamePassword( credentialsId: 'docker_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+	        def registry_url = "registry.hub.docker.com/"
+            sh "sudo -S docker login -u $USER -p $PASSWORD ${registry_url}"
+            docker.withRegistry("http://${registry_url}", "docker_credentials") {
+	        sh "sudo -S docker push codestorm2020/confluentinc-kafka"
+		      sh "sudo -S docker push codestorm2020/confluentinc-zookeeper"	    
+	      }
+	    }
+    }
+}
