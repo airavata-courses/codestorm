@@ -18,6 +18,7 @@ pipeline
                 withCredentials([usernamePassword( credentialsId: 'Jenkins_credentials', usernameVariable: 'USER', passwordVariable: 'PASSWORD')])
                 {
                     sh "sudo -S docker-compose -f ./sessionmanagement-2/docker-compose.yml build"
+                    
                 }
             }
 
