@@ -121,7 +121,7 @@ spec:
         imagePullPolicy: Always
         image: codestorm2020/sessionmanagement-2
         ports:
-          - containerPort: 8089
+          - containerPort: 8082
           
       - name: postprocessing
         imagePullPolicy: Always
