@@ -58,11 +58,11 @@ spec:
         env:
         - name: ZOOKEEPER_CLIENT_PORT
           value: "2181"
-        - name: ZOOKEEPER_TICK_TIME
-          value: "2000"
+        # - name: ZOOKEEPER_TICK_TIME
+        #   value: "2000"
+
       - name: kafka
         imagePullPolicy: Always
-
         image: confluentinc/cp-server:5.4.0
         ports:
           - containerPort: 9092
@@ -70,7 +70,7 @@ spec:
         - name: KAFKA_BROKER_ID
           value: "1"
         - name: KAFKA_ZOOKEEPER_CONNECT
-          value: "zookeeper:2181"
+          value: "localhost:2181"
         - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
           value: "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT"
         - name: KAFKA_ADVERTISED_LISTENERS
