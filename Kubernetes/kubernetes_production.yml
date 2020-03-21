@@ -412,22 +412,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sessionmanagement
+  name: sessionmanagement-2
   labels:
-    app: sessionmanagement
+    app: sessionmanagement-2
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: sessionmanagement
+      app: sessionmanagement-2
   template:
     metadata:
       labels:
-        app: sessionmanagement
+        app: sessionmanagement-2
     spec:
       containers:
-      - name: sessionmanagement
+      - name: sessionmanagement-2
         imagePullPolicy: Always
-        image: codestorm2020/sessionmanagement
+        image: codestorm2020/sessionmanagement-2
         ports:
         - containerPort: 8089
