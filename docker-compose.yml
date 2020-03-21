@@ -11,7 +11,7 @@ services:
         build:
             context: ./APIGateway/RESTGateway
             dockerfile: Dockerfile
-        image: api-gateway:1.0
+        image: codestorm2020/api-gateway
         ports:
                 - "4000:4000"
 
@@ -21,7 +21,7 @@ services:
         build:
             context: ./DataRetrieval/
             dockerfile: Dockerfile
-        image: dataretrieval:1.0
+        image: codestorm2020/dataretrieval
         ports:
             - "7000:7000"
   
@@ -31,7 +31,7 @@ services:
         build:
             context: ./frontend
             dockerfile: Dockerfile
-        image: frontend:1.0
+        image: codestorm2020/frontend
         ports:
             - "3000:3000"
 
@@ -41,7 +41,7 @@ services:
         build:
             context: ./ModelExecution
             dockerfile: Dockerfile
-        image: modelexecution:1.0
+        image: codestorm2020/modelexecution
         ports:
             - "7500:7500"
     postprocessing:
@@ -50,7 +50,7 @@ services:
         build:
             context: ./PostProcessing
             dockerfile: Dockerfile
-        image: postprocessing:1.0
+        image: codestorm2020/postprocessing
         ports:
             - "5500:5500"
 
@@ -60,7 +60,7 @@ services:
         build:
             context: ./sessionmanagement-2
             dockerfile: Dockerfile
-        image: sessionmanagement2:1.0
+        image: codestorm2020/sessionmanagement-2
         ports:
             - 8089:8089
 
@@ -70,7 +70,7 @@ services:
         build:
             context: ./UserManagement
             dockerfile: Dockerfile
-        image: docker-user-management:1.0
+        image: codestorm2020/usermanagement
         ports:
             - "8085:8085"
 
