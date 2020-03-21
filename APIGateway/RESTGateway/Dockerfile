@@ -2,6 +2,7 @@ FROM node:current-slim
 
 WORKDIR /usr/src/RESTGateway
 COPY package.json .
+RUN npm uninstall
 RUN npm install
 RUN npm install jsonwebtoken
 
