@@ -62,7 +62,7 @@ services:
             dockerfile: Dockerfile
         image: codestorm2020/sessionmanagement-2
         ports:
-            - 8089:8089
+            - 8082:8082
 
     UserManagement:
         container_name: user_management_container  // container name is given
