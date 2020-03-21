@@ -10,7 +10,7 @@ node {
         //sh "sudo -S docker commit confluentinc-zookeeper"
         //sh "sudo -S docker commit confluentinc-kafka"
 	      sh "sudo -S docker tag `docker images --format='{{.Repository}} {{.ID}}' | grep 'confluentinc-kafka' | head -1 | cut -d' ' -f2` `echo codestorm2020/confluentinc-kafka"
-   	    sh "sudo -S docker tag `docker images --format='{{.Repository}} {{.ID}}' | grep 'confluentinc-zookeeper' | head -1 | cut -d' ' -f2` `echo thertion12/confluentinc-zookeeper`"
+   	    sh "sudo -S docker tag `docker images --format='{{.Repository}} {{.ID}}' | grep 'confluentinc-zookeeper' | head -1 | cut -d' ' -f2` `echo codestorm2020/confluentinc-zookeeper`"
         sh "sudo -S docker-compose -f ./confluentinc-kafka-docker/docker-compose.yml down"
     }
 	
