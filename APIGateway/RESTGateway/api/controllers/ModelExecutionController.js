@@ -6,7 +6,7 @@ exports.getModelExecutionStatus = function(req,res) {
       return axios({
             method: "get",
             //url: "http://modelexecution:7500/modelexecution",
-            url: "http://localhost:7500/modelexecution",
+            url: "http://149.165.170.97:7500/modelexecution",
             headers: {
               "Access-Control-Allow-Origin": "*"
             }
