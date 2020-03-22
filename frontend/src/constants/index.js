@@ -1,4 +1,4 @@
-export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://149.165.170.97:30010';
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
 export const ACCESS_TOKEN = 'accessToken';
 
 export const NAME_MIN_LENGTH = 4;
