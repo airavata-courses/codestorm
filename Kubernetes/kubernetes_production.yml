@@ -31,6 +31,8 @@ spec:
     port: 3000
     targetPort: 3000
     nodePort: 30007
+  externalIPs:
+   - 149.165.170.97
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -52,18 +54,20 @@ spec:
       containers:
       - name: zookeeper
         imagePullPolicy: Always
-        image: confluentinc/cp-zookeeper:5.4.0
+        image: codestorm2020/confluentinc-zookeeper
+        # image: confluentinc/cp-zookeeper:5.4.0
         ports:
           - containerPort: 2181
         env:
-        - name: ZOOKEEPER_CLIENT_PORT
-          value: "2181"
+          - name: ZOOKEEPER_CLIENT_PORT
+            value: "2181"
         # - name: ZOOKEEPER_TICK_TIME
         #   value: "2000"
 
       - name: kafka
         imagePullPolicy: Always
-        image: confluentinc/cp-server:5.4.0
+        image: codestorm2020/confluentinc-kafka
+        # image: confluentinc/cp-server:5.4.0
         ports:
           - containerPort: 9092
         env:
@@ -83,16 +87,16 @@ spec:
           value: "0"
         - name: KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR
           value: "1"
-        - name: CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS
-          value: "broker:29092"
-        - name: CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT
-          value: "zookeeper:2181"
-        - name: CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS
-          value: "1"
-        - name: CONFLUENT_METRICS_ENABLE
-          value: "true"
-        - name: CONFLUENT_SUPPORT_CUSTOMER_ID
-          value: "anonymous"
+        # - name: CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS
+        #   value: "broker:29092"
+        # - name: CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT
+        #   value: "zookeeper:2181"
+        # - name: CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS
+        #   value: "1"
+        # - name: CONFLUENT_METRICS_ENABLE
+        #   value: "true"
+        # - name: CONFLUENT_SUPPORT_CUSTOMER_ID
+        #   value: "anonymous"
 
       - name: api-gateway
         imagePullPolicy: Always
