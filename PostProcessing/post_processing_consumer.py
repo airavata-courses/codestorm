@@ -28,5 +28,5 @@ def pp_consumer():
     print("Model consumer : ", data)
     # c.close()
     print("Returning from pp_consumer!!!!!!!!!!!!")
-    return msg.value()
+    return data
     c.close()
