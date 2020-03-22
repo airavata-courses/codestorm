@@ -10,7 +10,7 @@ exports.getWeatherData = function(req,res) {
         return axios({
             method: "get",
             //url: "http://dataretrieval:7000/getWeatherData",
-            url: "http://localhost:7000/getWeatherData",
+            url: "http://149.165.170.97:30007/getWeatherData",
             headers: {
               "Access-Control-Allow-Origin": "*"
             }
