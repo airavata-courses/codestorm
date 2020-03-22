@@ -17,8 +17,8 @@ def pp_consumer():
         print("No message!!")
         # continue
         # return "No message"
-    if msg.error():
-        print("Consumer error: {}".format(msg.error()))
+#     if msg.error():
+#         print("Consumer error: {}".format(msg.error()))
         # continue
     if msg.value()==None:
         return None
