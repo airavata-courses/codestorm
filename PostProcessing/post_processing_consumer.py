@@ -11,8 +11,9 @@ c.subscribe(['ModelExecution'])
 
 def pp_consumer():
     print("Entering consumer!@@")
-    # while True:
-    msg = c.poll(1.0)
+    msg = None
+    while msg is None:
+        msg = c.poll(1.0)
     if msg is None:
         print("No message!!")
         # continue
