@@ -6,7 +6,7 @@ networks:
         name: codestorm-default-network
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:5.4.0
+    image: confluentinc/cp-zookeeper:5.4.1
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -16,7 +16,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
 
   broker:
-    image: confluentinc/cp-server:5.4.0
+    image: confluentinc/cp-server:5.4.1
     hostname: broker
     container_name: broker
     depends_on:
