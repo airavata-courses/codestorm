@@ -9,7 +9,7 @@ node {
         sh "sudo -S docker-compose -f ./confluentinc-kafka-docker/docker-compose.yml up -d"
         sh "sudo -S docker commit zookeeper"
         sh "sudo -S docker commit broker"
-	      sh "sudo -S docker tag `docker images --format='{{.Repository}} {{.ID}}' | grep 'cp-server' | head -1 | cut -d' ' -f2` `echo codestorm2020/confluentinc-kafka`"
+	      sh "sudo -S docker tag `docker images --format='{{.Repository}} {{.ID}}' | grep 'cp-kafka' | head -1 | cut -d' ' -f2` `echo codestorm2020/confluentinc-kafka`"
    	    sh "sudo -S docker tag `docker images --format='{{.Repository}} {{.ID}}' | grep 'cp-zookeeper' | head -1 | cut -d' ' -f2` `echo codestorm2020/confluentinc-zookeeper`"
         sh "sudo -S docker-compose -f ./confluentinc-kafka-docker/docker-compose.yml down"
     }
