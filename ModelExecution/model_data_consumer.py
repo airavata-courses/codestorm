@@ -11,9 +11,9 @@ c.subscribe(['DataRetrieval'])
 
 def md_consumer():
     print("Started Consuming")
-    msg = None
-    while msg is None:
-        msg = c.poll(1.0)
+    # while True:
+    print("Inside while!!!")
+    msg = c.poll(1.0)
     if msg is None:
         print("No message") 
         # continue
