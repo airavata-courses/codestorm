@@ -27,7 +27,7 @@ spec:
     targetPort: 3000
     nodePort: 30007
   externalIPs:
-   - 149.165.170.97
+   - 149.165.171.133
 ---
 apiVersion: apps/v1
 kind: Deployment
