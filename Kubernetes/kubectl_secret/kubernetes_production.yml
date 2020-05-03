@@ -25,7 +25,7 @@ spec:
   - protocol: TCP
     port: 3000
     targetPort: 3000
-    nodePort: 30007
+    nodePort: 30011
   externalIPs:
    - 149.165.171.133
 ---
