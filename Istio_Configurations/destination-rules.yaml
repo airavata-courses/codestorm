@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: weather-app
+spec:
+  host: weather-app
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+  host: weather-app-frontend
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_CONN
+	  

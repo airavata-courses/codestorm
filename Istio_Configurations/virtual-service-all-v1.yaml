@@ -1,0 +1,38 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: login
+spec:
+  hosts:
+  - login
+  http:
+  - route:
+    - destination:
+        host: login
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: signup
+spec:
+  hosts:
+  - signup
+  http:
+  - route:
+    - destination:
+        host: signup
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: weatherdata
+spec:
+  hosts:
+  - weatherdata
+  http:
+  - route:
+    - destination:
+        host: weatherdata
+        subset: v1
